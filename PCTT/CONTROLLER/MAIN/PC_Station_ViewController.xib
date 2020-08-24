@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,12 +11,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Station_ViewController" customModule="PCTT" customModuleProvider="target">
             <connections>
                 <outlet property="back" destination="pqc-WF-d1E" id="nvC-58-WFh"/>
+                <outlet property="baseView" destination="Ncb-El-zGF" id="cv8-XJ-59T"/>
                 <outlet property="bg" destination="GFI-i0-Hue" id="ycj-Nn-0Ny"/>
                 <outlet property="blurView" destination="wUL-eV-51n" id="Gc3-fL-5Ne"/>
                 <outlet property="global" destination="Sam-SF-38O" id="nT4-mA-dbv"/>
                 <outlet property="mapBtn" destination="rfs-AS-bT1" id="E6j-qO-yYu"/>
                 <outlet property="mapHeight" destination="vbt-VD-W9x" id="vVL-Bc-NvK"/>
-                <outlet property="mapView" destination="Ncb-El-zGF" id="hry-b3-ibe"/>
+                <outlet property="mapView" destination="5kp-ne-fl1" id="5vo-9C-5C3"/>
                 <outlet property="notification" destination="atK-NK-jma" id="rgC-cV-VLL"/>
                 <outlet property="search" destination="xOE-Jd-hP0" id="EWs-aV-mk7"/>
                 <outlet property="setting" destination="Efe-SL-j88" id="t5r-Ab-bkh"/>
@@ -41,7 +40,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atK-NK-jma">
-                    <rect key="frame" x="365" y="28" width="44" height="44"/>
+                    <rect key="frame" x="365" y="8" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Lkh-F9-r9S"/>
                         <constraint firstAttribute="width" constant="44" id="NyG-mF-Xof"/>
@@ -52,7 +51,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-SL-j88">
-                    <rect key="frame" x="5" y="28" width="44" height="44"/>
+                    <rect key="frame" x="5" y="8" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="3XC-iQ-bUL"/>
                         <constraint firstAttribute="height" constant="44" id="kub-d5-vuc"/>
@@ -63,7 +62,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-SF-38O">
-                    <rect key="frame" x="326" y="28" width="44" height="44"/>
+                    <rect key="frame" x="326" y="8" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="UgW-zy-9y2"/>
                         <constraint firstAttribute="height" constant="44" id="XNk-Pv-YpM"/>
@@ -74,7 +73,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh Sách Trạm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7E-Hw-6Oc" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                    <rect key="frame" x="97" y="35" width="221" height="30"/>
+                    <rect key="frame" x="97" y="15" width="221" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="eRf-ON-oIC"/>
                     </constraints>
@@ -97,7 +96,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view clipsSubviews="YES" alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raT-V6-1Yy">
-                    <rect key="frame" x="12" y="80" width="390" height="52"/>
+                    <rect key="frame" x="12" y="60" width="390" height="52"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="Fzf-9h-P7Z"/>
@@ -109,7 +108,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tên trạm cần tìm ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xOE-Jd-hP0">
-                    <rect key="frame" x="68" y="92" width="321" height="30"/>
+                    <rect key="frame" x="68" y="72" width="321" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="0zE-vx-oCT"/>
@@ -127,14 +126,14 @@
                     </connections>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="CmM-d6-mYN">
-                    <rect key="frame" x="25" y="90" width="32" height="32"/>
+                    <rect key="frame" x="25" y="70" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="Rrn-fP-iVX"/>
                         <constraint firstAttribute="height" constant="32" id="Yy4-Uv-SKW"/>
                     </constraints>
                 </imageView>
                 <view clipsSubviews="YES" alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUL-eV-51n">
-                    <rect key="frame" x="12" y="150" width="390" height="586"/>
+                    <rect key="frame" x="12" y="130" width="390" height="606"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -143,7 +142,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqc-WF-d1E">
-                    <rect key="frame" x="5" y="25" width="50" height="50"/>
+                    <rect key="frame" x="5" y="5" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="1jR-tu-lM0"/>
                         <constraint firstAttribute="height" constant="50" id="7Hb-25-Kwf"/>
@@ -154,7 +153,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIE-Nx-RuO" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                    <rect key="frame" x="25" y="161" width="364" height="23"/>
+                    <rect key="frame" x="25" y="141" width="364" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="KLj-MS-VqV"/>
                     </constraints>
@@ -179,8 +178,35 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-El-zGF">
+                    <rect key="frame" x="17" y="172" width="380" height="148"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kp-ne-fl1" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="0.0" width="380" height="148"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-AS-bT1">
+                                    <rect key="frame" x="326" y="19" width="34" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="ic_full_screen"/>
+                                    <connections>
+                                        <action selector="didPressMap" destination="-1" eventType="touchUpInside" id="6Vc-gq-GWq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="bZt-yL-pq1"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="148" id="vbt-VD-W9x"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q0n-zd-Rko">
-                    <rect key="frame" x="12" y="345" width="390" height="391"/>
+                    <rect key="frame" x="12" y="325" width="390" height="411"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
@@ -193,26 +219,6 @@
                         <outlet property="delegate" destination="-1" id="rh9-08-Yq9"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-El-zGF" customClass="GMSMapView">
-                    <rect key="frame" x="17" y="192" width="380" height="148"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-AS-bT1">
-                            <rect key="frame" x="326" y="20" width="34" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="ic_full_screen"/>
-                            <connections>
-                                <action selector="didPressMap" destination="-1" eventType="touchUpInside" id="6Vc-gq-GWq"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="148" id="vbt-VD-W9x"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="IXO-5z-a3D"/>
-                    </connections>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -263,7 +269,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_default" width="240" height="359.66665649414062"/>
+        <image name="bg_default" width="240" height="426.66665649414062"/>
         <image name="ic_full_screen" width="33.333332061767578" height="33.333332061767578"/>
         <image name="ico_rain_map" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icon_back" width="33.333332061767578" height="33.333332061767578"/>

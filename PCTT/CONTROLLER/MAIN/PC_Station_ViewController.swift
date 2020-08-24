@@ -55,6 +55,8 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     @IBOutlet var blurView : UIView!
         
+    @IBOutlet var baseView : UIView!
+
     @IBOutlet var time: MarqueeLabel!
     
     @IBOutlet var titleLabel: MarqueeLabel!
@@ -136,6 +138,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         search.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         self.hideAndSeek()
         blurView.topRadius()
+        self.tempPosition = self.mapView.frame
     }
     
     func hideAndSeek() {
@@ -254,15 +257,6 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         })
     }
     
-//    getStationSensorByProvince
-    
-//    getStationColorForecastByProvince
-    
-//    getStationPercipitionByProvince
-    
-    
-//    getListStationByProvince
-    
     func didRequestStationByProvince() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getStationPercipitionByProvince",
                                                     "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",
@@ -361,8 +355,6 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                 }
             }
             
-            
-            
 //            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
 //                self.view.hideSkeleton()
                 self.tableView.reloadData()
@@ -374,19 +366,26 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     @IBAction func didPressMap() {
         self.view.endEditing(true)
+                
         UIView.animate(withDuration: 0.3, animations: {
 
             var frameMap = self.mapView.frame
-            
+
             frameMap.origin.y = 0
-            
+
             frameMap.origin.x = 0
-            
+
             frameMap.size.height = CGFloat(self.screenHeight())
-            
+
             frameMap.size.width = CGFloat(self.screenWidth())
-            
+
             self.mapView.frame = self.isFullScreen ? self.tempPosition : frameMap
+
+            if !self.isFullScreen {
+                self.view.addSubview(self.mapView)
+            } else {
+                self.baseView.addSubview(self.mapView)
+            }
             
             self.isFullScreen = !self.isFullScreen
             
@@ -511,6 +510,10 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     }
 
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        if self.isFullScreen {
+            self.didPressMap()
+        }
         
         let data = (marker.accessibilityLabel as! NSString).objectFromJSONString() as! NSDictionary
         
@@ -693,5 +696,21 @@ extension PC_Station_ViewController: SkeletonTableViewDataSource, SkeletonTableV
         foreCast.dataMonitorExtra = dataMonitorExtra
         
         self.navigationController?.pushViewController(foreCast, animated: true)
+    }
+}
+
+extension UIView {
+    func pinEdges(to other: UIView) {
+        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
+    }
+    
+    func pinEdgesOut(to other: UIView) {
+        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = false
+        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = false
+        topAnchor.constraint(equalTo: other.topAnchor).isActive = false
+        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = false
     }
 }
