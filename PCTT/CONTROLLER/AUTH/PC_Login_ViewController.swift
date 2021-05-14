@@ -32,6 +32,10 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passErr: UILabel!
     
     @IBOutlet var bottom: MarqueeLabel!
+    
+    @IBOutlet var uImage: UIImageView!
+
+    @IBOutlet var pImage: UIImageView!
 
     var loginCover: UIView!
     
@@ -64,59 +68,24 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        bottom.text = "Weather Book © 2019 - Ver %@ - Hotline 0917271595".format(parameters: appVersion!)
+        bottom.text = "WEATHERPLUS.,JSC © - Phiên bản %@ - Hotline 0961308830".format(parameters: appVersion!)
         
         bottom.action(forTouch: [:]) { (obj) in
             self.callNumber(phoneNumber: Information.phone)
         }
         
-        submit.withShadow()
+        uImage.imageColor(color: AVHexColor.color(withHexString: "#6E91C9"))
         
-//        self.didRequestCheck()
+        pImage.imageColor(color: AVHexColor.color(withHexString: "#6E91C9"))
+
+        let image = UIImage(named: isCheck ? "design_ic_visibility_off" : "design_ic_visibility")
+        
+        let finalImage = image?.imageWithColor(color1: AVHexColor.color(withHexString: "#6E91C9"))
+        
+        check.setImage(finalImage, for: .normal)
+        
+//        submit.withShadow()
     }
-    
-//    func didRequestCheck() {
-//        LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/x4p9zynxk0pyzxu/PCTT_2.plist", "overrideAlert":"1"], withCache: { (cache) in
-//
-//        }, andCompletion: { (response, errorCode, error, isValid, object) in
-//
-//            if error != nil {
-//                self.setUp()
-//                return
-//            }
-//
-//            let data = response?.data(using: .utf8)
-//            let dict = XMLReader.return(XMLReader.dictionary(forXMLData: data, options: 0))
-//
-////            self.loginCover.alpha = (dict! as NSDictionary).getValueFromKey("show") == "1" ? 1 : 0
-//
-//            let information = ["company_id": 1, "company_name": "Agrimedia", "count_notification": 0,
-//                               "count_province": 35, "created_at": "2018-10-17T18:34:12.000000Z", "email":"", "name":"AGRIMEDIA", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"28"] as [String : Any]
-//
-//            if (dict! as NSDictionary).getValueFromKey("show") == "0" {
-//
-//                self.add(["name":"pcttvietnam" as Any, "pass":"pctt2019" as Any], andKey: "log")
-//
-//                self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
-//
-//                Information.saveInfo()
-//
-//                self.addValue((information as! NSDictionary).getValueFromKey("token"), andKey: "token")
-//
-//                Information.saveToken()
-//
-//                Information.check = "1"
-//
-//                if Information.userInfo?.getValueFromKey("count_province") == "1" {
-//                    self.navigationController?.pushViewController(PC_Station_ViewController.init(), animated: false)
-//                } else {
-//                    self.navigationController?.pushViewController(PC_Main_ViewController.init(), animated: false)
-//                }
-//            } else {
-//                self.setUp()
-//            }
-//        })
-//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -170,32 +139,13 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
             self.cover.alpha = bbgg ? 0.3 : 0
         }) { (done) in
             UIView.transition(with: self.bg, duration: 1, options: .transitionCrossDissolve, animations: {
-                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "bg_default")
+//                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "bg_default")
             }, completion: { (done) in
                 UIView.animate(withDuration: 1, animations: {
                     self.cover.alpha = 0
                 }) { (done) in
-//                    UIView.animate(withDuration: 0.5, animations: {
-//                        var frame = self.logo.frame
-//
-//                        frame.origin.y -= CGFloat((self.screenHeight()/2 - (237 * 0.7)) / 2) + (CGFloat(self.topGap) - 100) + (IS_IPHONE_5 ? 140 : 60)
-//
-//                        self.logo.frame = frame
-//
-//                        self.logo.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-//
-//                    }) { (done) in
-//                        if logged {
-//                            self.uName.text = Information.log!["name"] as? String
-//                            self.pass.text = Information.log!["pass"] as? String
-//                            self.submit.isEnabled = self.uName.text?.count != 0 && self.pass.text?.count != 0
-//                            self.submit.alpha = self.uName.text?.count != 0 && self.pass.text?.count != 0 ? 1 : 0.5
-//                            self.didPressSubmit()
-//                        }
-//                        self.setUpLogin()
-//                    }
-                    LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/x4p9zynxk0pyzxu/PCTT_2.plist", "overrideAlert":"1"], withCache: { (cache) in
-                        
+                    LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/bu4kphx4frrd1ft/PDMS_3.plist", "overrideAlert":"1"], withCache: { (cache) in
+                                                
                     }, andCompletion: { (response, errorCode, error, isValid, object) in
                         
                         if error != nil {
@@ -226,12 +176,12 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                         
                         //            self.loginCover.alpha = (dict! as NSDictionary).getValueFromKey("show") == "1" ? 1 : 0
                         
-                        let information = ["company_id": 1, "company_name": "Agrimedia", "count_notification": 0,
-                                           "count_province": 35, "created_at": "2018-10-17T18:34:12.000000Z", "email":"", "name":"AGRIMEDIA", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"28"] as [String : Any]
+                        let information = ["company_id": 1, "company_name": "PDMS", "count_notification": 0,
+                                           "count_province": 1, "created_at": "2020-10-17T18:34:12.000000Z", "email":"", "name":"weatherplus", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"1"] as [String : Any]
                         
                         if (dict! as NSDictionary).getValueFromKey("show") == "0" {
                             
-                            self.add(["name":"pcttvietnam" as Any, "pass":"pctt2019" as Any], andKey: "log")
+                            self.add(["name":"weatherplus" as Any, "pass":"123456aA" as Any], andKey: "log")
 
                             self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
                             
@@ -305,7 +255,11 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didPressCheck() {
         pass.isSecureTextEntry = isCheck
         
-        check.setImage(UIImage(named: isCheck ? "design_ic_visibility_off" : "design_ic_visibility"), for: .normal)
+        let image = UIImage(named: isCheck ? "design_ic_visibility_off" : "design_ic_visibility")
+        
+        let finalImage = image?.imageWithColor(color1: AVHexColor.color(withHexString: "#6E91C9"))
+        
+        check.setImage(finalImage, for: .normal)
         
         isCheck = !isCheck
     }
@@ -326,6 +280,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                 self.showToast(response?.dictionize().getValueFromKey("ERR_MSG"), andPos: 0)
                 return
             }
+            
+            print(result)
             
             self.add(["name":self.uName.text as Any, "pass":self.pass.text as Any], andKey: "log")
 

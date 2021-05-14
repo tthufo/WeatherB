@@ -50,6 +50,8 @@ class PC_Main_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var bg: UIImageView!
     
+    @IBOutlet var iconSearch: UIImageView!
+
     @IBOutlet var blurView: UIView!
     
     @IBOutlet var cover: UIView!
@@ -87,7 +89,7 @@ class PC_Main_ViewController: UIViewController, UITextFieldDelegate {
             tableView.addSubview(refreshControl)
         }
         
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = UIColor.systemBlue
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
         
         let gradient = SkeletonGradient.init(baseColor: UIColor.white, secondaryColor: UIColor.lightText)
@@ -100,6 +102,8 @@ class PC_Main_ViewController: UIViewController, UITextFieldDelegate {
         Permission.shareInstance()?.initLocation(false, andCompletion: { (type) in
             
         })
+        
+        iconSearch.imageColor(color: UIColor.black)
         
         blurView.topRadius()
     }
@@ -116,7 +120,8 @@ class PC_Main_ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        notification.badgeValue = Information.userInfo?.getValueFromKey("count_notification")
+        notification.badgeValue = Information.userInfo?.getValueFromKey("count_notification") == "" || Information.userInfo?.getValueFromKey("count_notification") == "0" ? "" : Information.userInfo?.getValueFromKey("count_notification")
+        notification.shouldHideBadgeAtZero = true
         notification.badgeOriginX = 20
         notification.badgeOriginY = 5
        

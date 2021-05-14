@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -94,6 +92,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="GJv-wO-USY"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Kbe-NS-m6W" secondAttribute="bottom" constant="4" id="59Z-M8-OYn"/>
@@ -105,7 +104,6 @@
                 <constraint firstItem="PwL-Qg-x7z" firstAttribute="trailing" secondItem="GJv-wO-USY" secondAttribute="trailing" id="v8W-dK-1aj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="GJv-wO-USY"/>
             <point key="canvasLocation" x="-205.07246376811597" y="192.52232142857142"/>
         </view>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0yS-iw-4A2">
@@ -117,10 +115,32 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="4ef-6d-Y7G"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="4ef-6d-Y7G"/>
             <point key="canvasLocation" x="-618.1159420289855" y="263.50446428571428"/>
         </view>
+        <view contentMode="scaleToFill" id="5HC-CD-rxM">
+            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="pNF-vC-Xcd">
+                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="O2H-yj-B8y"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pNF-vC-Xcd" firstAttribute="top" secondItem="5HC-CD-rxM" secondAttribute="top" id="JqJ-md-t28"/>
+                <constraint firstItem="pNF-vC-Xcd" firstAttribute="leading" secondItem="5HC-CD-rxM" secondAttribute="leading" id="SP0-zy-H2d"/>
+                <constraint firstAttribute="trailing" secondItem="pNF-vC-Xcd" secondAttribute="trailing" id="USr-X2-Ut3"/>
+                <constraint firstItem="pNF-vC-Xcd" firstAttribute="bottom" secondItem="O2H-yj-B8y" secondAttribute="bottom" id="ZDl-QK-TiA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-1101.449275362319" y="243.75"/>
+        </view>
     </objects>
+    <resources>
+        <image name="ic_location" width="33" height="33"/>
+    </resources>
 </document>

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let APIMAP: String = "AIzaSyBXBWoCCozdvmjRABdP_VfDiPAsSU1WS2Q"
+    let APIMAP: String = "AIzaSyBauMNrbWPT8T9lqi_1v-LL3XMS_tiC1bk"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

@@ -41,15 +41,21 @@ class PC_ForCast_ViewController: UIViewController, UIScrollViewDelegate {
     
     var isDown: Bool = false
     
+    var isForecast: Bool = false
+    
     @IBOutlet var titleLabel: MarqueeLabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(dataMonitorExtra, dataMonitor)
+        
         tableView.withCell("PC_ForeCast_Cell")
         
         tableView.withCell("PC_ForeCast_7_Cell")
         
+        tableView.withCell("PC_Instruction_Cell")
+
         titleLabel.text = station as String?
         
         dataList = NSMutableArray.init()
@@ -57,11 +63,13 @@ class PC_ForCast_ViewController: UIViewController, UIScrollViewDelegate {
         dataMonitor = NSMutableDictionary.init()
         
         if Reachability.isConnectedToNetwork(){
-            self.didRequestBG()
+//            self.didRequestBG()
             
             self.didRequestMonitorData()
             
-            self.didRequestStationForeCast()
+            if self.isForecast {
+                self.didRequestStationForeCast()
+            }
             
             self.showSVHUD("", andOption: 0)
         }else{
@@ -195,6 +203,10 @@ class PC_ForCast_ViewController: UIViewController, UIScrollViewDelegate {
                             info.text = value == "" || value == "--" ? "--" : "%@ %@".format(parameters: data.getValueFromKey(key) as! CVarArg, (con as! NSDictionary).getValueFromKey("image"))
                         }
                         
+                        let icon = self.withView(parent, tag: 11) as! UIImageView
+                        
+                        icon.imageColor(color: UIColor.black)
+                        
                         parent.isHidden = false
                     }
                 }
@@ -249,11 +261,11 @@ class PC_ForCast_ViewController: UIViewController, UIScrollViewDelegate {
 extension PC_ForCast_ViewController: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? dataMonitor.allKeys.count == 0 ? 0 : isDown ? 190 : self.configHeight() : dataList.count == 0 ? 0 : 535
+        return indexPath.row == 2 ? 275 : indexPath.row == 0 ? dataMonitor.allKeys.count == 0 ? 0 : isDown ? 190 : self.configHeight() : dataList.count == 0 ? 0 : 495
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isDown ? 1 : 2
+        return isDown ? 1 : dataMonitor.allKeys.count != 0 ? 3 : 2
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -294,15 +306,29 @@ extension PC_ForCast_ViewController: SkeletonTableViewDataSource, SkeletonTableV
                     
                     dateTime.append(date![1])
                     
-                    let timeTime = timer?.components(separatedBy: " ").first
+                    var timeTime = ""
                     
-                    time.text = "Lượng mưa cập nhật từ 00:00 %@ đến %@ %@".format(parameters: dateTime, timeTime!, dateTime)
+                    let dateDate = (timer?.components(separatedBy: " ").first)?.components(separatedBy: ":")
+                    
+                    timeTime.append(dateDate![0])
+                    
+                    timeTime.append(":")
+                    
+                    timeTime.append("00")
+                    
+                    let yesterday = self.yesterdayDate("dd/MM")
+                    
+                    let yesterday_time = Int(dateDate![0])! + 1 >= 24 ? 0 : Int(dateDate![0])! + 1
+                    
+                    let time_yesterday = "%@%i".format(parameters: yesterday_time < 10 ? "0" : "", yesterday_time)
+                    
+                    time.text = "Lượng mưa cập nhật từ %@:00 %@ đến %@ %@".format(parameters: time_yesterday, yesterday!, timeTime, dateTime)
                 }
             }
             return topCell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "PC_ForeCast_Cell" : "PC_ForeCast_7_Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "PC_ForeCast_Cell" : indexPath.row == 1 ? "PC_ForeCast_7_Cell" : "PC_Instruction_Cell", for: indexPath)
         
         if indexPath.row == 0 {
             if dataMonitor.allKeys.count != 0 {
@@ -338,19 +364,35 @@ extension PC_ForCast_ViewController: SkeletonTableViewDataSource, SkeletonTableV
 
                     dateTime.append(date![1])
 
-                    let timeTime = timer?.components(separatedBy: " ").first
-
-                    time.text = "Lượng mưa cập nhật từ 00:00 %@ đến %@ %@".format(parameters: dateTime, timeTime!, dateTime)
+                    var timeTime = ""
+                    
+                    let dateDate = (timer?.components(separatedBy: " ").first)?.components(separatedBy: ":")
+                    
+                    timeTime.append(dateDate![0])
+                    
+                    timeTime.append(":")
+                    
+                    timeTime.append("00")
+                    
+                    let yesterday = self.yesterdayDate("dd/MM")
+                    
+                    let yesterday_time = Int(dateDate![0])! + 1 >= 24 ? 0 : Int(dateDate![0])! + 1
+                    
+                    let time_yesterday = "%@%i".format(parameters: yesterday_time < 10 ? "0" : "", yesterday_time)
+                    
+                    time.text = "Lượng mưa cập nhật từ %@:00 %@ đến %@ %@".format(parameters: time_yesterday, yesterday!, timeTime, dateTime)
                 }
                 
                 self.condition(cell: cell, data: dataMonitor)
             }
-        } else {
+        } else if indexPath.row == 1 {
             if dataList.count != 0 {
                 (cell as! PC_ForeCast_7_Cell).dataList = dataList
                 (self.withView(cell, tag: 999) as! UILabel).alpha = 1
                 (cell as! PC_ForeCast_7_Cell).collectionView.reloadData()
             }
+        } else {
+            
         }
         
         return cell

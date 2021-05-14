@@ -53,6 +53,8 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     @IBOutlet var bg: UIImageView!
     
+    @IBOutlet var iconSearch: UIImageView!
+    
     @IBOutlet var blurView : UIView!
         
     @IBOutlet var baseView : UIView!
@@ -94,6 +96,8 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.mapHeight.constant = self.tableView.frame.size.height / 2
+
         if station != nil && station != "" {
             titleLabel.text = station as String?
         }
@@ -127,7 +131,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             tableView.addSubview(refreshControl)
         }
         
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = UIColor.systemBlue
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
         
         let gradient = SkeletonGradient.init(baseColor: UIColor.white, secondaryColor: UIColor.lightText)
@@ -139,6 +143,8 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         self.hideAndSeek()
         blurView.topRadius()
         self.tempPosition = self.mapView.frame
+        
+        iconSearch.imageColor(color: UIColor.black)
     }
     
     func hideAndSeek() {
@@ -166,7 +172,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         if Reachability.isConnectedToNetwork(){
             self.didRequestStationByProvince()
             self.didRequestMaxDate()
-            self.didRequestBG()
+//            self.didRequestBG()
         }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.view.hideSkeleton()
@@ -176,7 +182,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         }
         
         kb.keyboard { (height, isOn) in
-            self.mapHeight.constant = isOn ? 0 : 148
+            self.mapHeight.constant = isOn ? 0 : self.tableView.frame.size.height / 2
             self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: isOn ? (height - 0) : 0, right: 0)
             if #available(iOS 10.0, *) {
                 self.tableView.refreshControl = isOn ? nil : self.refreshControl
@@ -218,7 +224,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     func didRequestMaxDate() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getMaxCurrentDate",
-                                                    "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",              "province_code": provinceId ?? "",
+                                                    "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",              "province_code": provinceId ?? "LCI",
                                                     "overrideAlert":"1",
                                                     ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
@@ -227,6 +233,8 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                 self.showToast(response?.dictionize().getValueFromKey("ERR_MSG"), andPos: 0)
                 return
             }
+            
+            print("-->", result)
             
             let timer = (response?.dictionize()["RESULT"] as! NSDictionary).getValueFromKey("current_date")
             
@@ -249,9 +257,16 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             
             timeTime.append(":")
             
-            timeTime.append(dateDate![1])
+//            timeTime.append(dateDate![1])
+            timeTime.append("00")
             
-            self.time.text = "Lượng mưa cập nhật từ 00:00 %@ đến %@ %@".format(parameters: dateTime, timeTime, dateTime)
+            let yesterday = self.yesterdayDate("dd/MM")
+            
+            let yesterday_time = Int(dateDate![0])! + 1 >= 24 ? 0 : Int(dateDate![0])! + 1
+            
+            let time_yesterday = "%@%i".format(parameters: yesterday_time < 10 ? "0" : "", yesterday_time)
+            
+            self.time.text = "Lượng mưa cập nhật từ %@:00 %@ đến %@ %@".format(parameters: time_yesterday, yesterday!, timeTime, dateTime)
             
             self.tempPosition = self.mapView.frame
         })
@@ -260,7 +275,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     func didRequestStationByProvince() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getStationPercipitionByProvince",
                                                     "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",
-                                                    "province_code":provinceId ?? "",
+                                                    "province_code": provinceId ?? "LCI",
                                                     "overrideAlert":"1",
                                                 ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
@@ -289,7 +304,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     func didRequestColorStationByProvince() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getStationColorForecastByProvince",
                                                     "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",
-                                                    "province_code":provinceId ?? "",
+                                                    "province_code":provinceId ?? "LCI",
                                                     "overrideAlert":"1",
             ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
@@ -326,7 +341,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     func didRequestSensorStationByProvince() {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getStationSensorByProvince",
                                                     "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",
-                                                    "province_code":provinceId ?? "",
+                                                    "province_code":provinceId ?? "LCI",
                                                     "overrideAlert":"1",
             ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
@@ -449,7 +464,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         search.text = ""
         self.didRequestStationByProvince()
         self.didRequestMaxDate()
-        self.didRequestBG()
+//        self.didRequestBG()
     }
     
     let strip: (String) -> String = {
@@ -472,15 +487,15 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             bounds = bounds.includingCoordinate(marker.position)
             marker.accessibilityLabel = dict.bv_jsonString(withPrettyPrint: true)
             
-            let mark = Bundle.main.loadNibNamed("PC_Marker_View", owner: nil, options: nil)?[0] as! UIView
+            let mark = Bundle.main.loadNibNamed("PC_Marker_View", owner: nil, options: nil)?[2] as! UIView
             
-            let arrow = self.withView(mark, tag: 15) as! UIView
-            
-            arrow.transform = CGAffineTransform(rotationAngle: 150);
+//            let arrow = self.withView(mark, tag: 15) as! UIView
+//
+//            arrow.transform = CGAffineTransform(rotationAngle: 150);
 
-            let image = self.withView(mark, tag: 11) as! UIImageView
+            let image = self.withView(mark, tag: 1) as! UIImageView
             
-            image.image = UIImage(named: "icon_rain")
+            image.image = UIImage(named: "ic_location")
             
             if dict.getValueFromKey("color_monitoring") != "" {
                 image.imageColor(color: AVHexColor.color(withHexString: dict.getValueFromKey("color_monitoring")))
@@ -488,16 +503,18 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             
             //            image.imageColor(color: AVHexColor.color(withHexString: dict.getValueFromKey("color_monitoring")))
             
-            let number = self.withView(mark, tag: 12) as! UILabel
+//            let number = self.withView(mark, tag: 12) as! UILabel
 
             let rain = (dict as AnyObject).getValueFromKey("preciptation")
             
-            number.text = rain == "" ? "--" : rain == "0" ? "0 mm" : "%@ mm".format(parameters: dict.getValueFromKey("preciptation") as! CVarArg)
-            
+//            number.text = rain == "" ? "--" : rain == "0" ? "0 mm" : "%@ mm".format(parameters: dict.getValueFromKey("preciptation") as! CVarArg)
+//
             var frame = mark.frame
 
-            frame.size.width = number.intrinsicContentSize.width + 60
+            frame.size.width =  30// number.intrinsicContentSize.width + 60
 
+            frame.size.height = 30
+            
             mark.frame = frame
             
             if rain != "" && rain != "-1" {
@@ -570,6 +587,7 @@ class PC_Station_ViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             for key in data.allKeys {
                 if (con as! NSDictionary)["key"] as! String == key as! String && data.getValueFromKey((key as! String)) == "1"  {
                     (self.withView(cell, tag: Int32(linear[indexing])) as! UIImageView).image = UIImage(named: (con as! NSDictionary)["image"] as! String)
+                    (self.withView(cell, tag: Int32(linear[indexing])) as! UIImageView).imageColor(color: UIColor.black)
                     indexing += 1
                 }
             }
@@ -610,6 +628,8 @@ extension PC_Station_ViewController: SkeletonTableViewDataSource, SkeletonTableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = dataList[indexPath.row] as! NSDictionary
+        
+//        print("->", data)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: (self.ident(data: data) as! NSDictionary).getValueFromKey("cell"), for: indexPath)
         
@@ -659,6 +679,8 @@ extension PC_Station_ViewController: SkeletonTableViewDataSource, SkeletonTableV
         
         forcast.alpha = data.getValueFromKey("forecast") == "1" ? 1 : 0
         
+//        forcast.imageColor(color: UIColor.black)
+        
         let forcastText = self.withView(cell, tag: 5) as! UILabel
 
         forcastText.alpha = data.getValueFromKey("forecast") == "1" ? 1 : 0
@@ -692,6 +714,8 @@ extension PC_Station_ViewController: SkeletonTableViewDataSource, SkeletonTableV
         foreCast.stationCode = data.getValueFromKey("station_code") as NSString?
         
         foreCast.station = data.getValueFromKey("station_name") as NSString?
+        
+        foreCast.isForecast = data.getValueFromKey("forecast") != "0"
         
         foreCast.dataMonitorExtra = dataMonitorExtra
         

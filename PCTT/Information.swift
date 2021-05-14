@@ -9,7 +9,7 @@
 import UIKit
 
 class Information: NSObject {
-    @objc static var phone: String = "0917271595"
+    @objc static var phone: String = "0961308830"
 
     @objc static var check: String?
     

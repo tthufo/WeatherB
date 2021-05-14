@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,8 +23,8 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="S4I-aX-hs6"/>
                             <constraint firstAttribute="height" constant="21" id="oZD-HC-LLz"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p76-Vg-Ggy">
@@ -35,8 +33,8 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="0FU-sN-zQI"/>
                             <constraint firstAttribute="height" constant="21" id="2Ss-1K-Xd8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2V-dV-wdD">
@@ -45,18 +43,18 @@
                             <constraint firstAttribute="height" constant="21" id="1mb-6q-cxU"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="PQC-y6-ojj"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-P2-LCK">
-                        <rect key="frame" x="7.5" y="238" width="125" height="50"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-P2-LCK">
+                        <rect key="frame" x="7.5" y="238" width="125" height="0.0"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="0hN-Va-e9Q"/>
+                            <constraint firstAttribute="height" id="0hN-Va-e9Q"/>
                             <constraint firstAttribute="width" constant="125" id="Qxi-si-4du"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcx-j7-ger">
@@ -67,7 +65,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mP-ZO-aXC">
-                        <rect key="frame" x="46" y="314" width="48" height="25"/>
+                        <rect key="frame" x="46" y="264" width="48" height="25"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_rain-1" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-QE-NJK">
                                 <rect key="frame" x="0.0" y="1" width="23" height="23"/>
@@ -82,8 +80,8 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="S9L-tc-vxJ"/>
                                     <constraint firstAttribute="height" constant="21" id="krd-c4-zHB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -99,7 +97,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cW-d2-5RW">
-                        <rect key="frame" x="46" y="348" width="48" height="25"/>
+                        <rect key="frame" x="46" y="298" width="48" height="25"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_humidity" translatesAutoresizingMaskIntoConstraints="NO" id="wDX-Oj-uih">
                                 <rect key="frame" x="0.0" y="1" width="23" height="23"/>
@@ -114,8 +112,8 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="Njo-Oi-6bZ"/>
                                     <constraint firstAttribute="height" constant="21" id="f35-hz-OUk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -131,7 +129,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJF-Sd-wDe">
-                        <rect key="frame" x="46" y="382" width="48" height="25"/>
+                        <rect key="frame" x="46" y="332" width="48" height="25"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="18" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_do_am_to" translatesAutoresizingMaskIntoConstraints="NO" id="GKj-aw-0wl">
                                 <rect key="frame" x="0.0" y="1" width="23" height="23"/>
@@ -146,8 +144,8 @@
                                     <constraint firstAttribute="height" constant="21" id="oFj-rs-0La"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="ssn-Fm-k38"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -163,7 +161,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zde-5m-CXK">
-                        <rect key="frame" x="46" y="416" width="48" height="25"/>
+                        <rect key="frame" x="46" y="366" width="48" height="25"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="direct_wind" translatesAutoresizingMaskIntoConstraints="NO" id="RsD-cq-Jh9">
                                 <rect key="frame" x="0.0" y="1" width="23" height="23"/>
@@ -185,8 +183,8 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="f4F-d5-QX7"/>
                                     <constraint firstAttribute="height" constant="21" id="hpc-5a-PBi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -212,6 +210,7 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="lph-87-1Oe"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="g2V-dV-wdD" firstAttribute="centerX" secondItem="7eK-pf-ged" secondAttribute="centerX" id="4tS-cp-vjW"/>
@@ -236,7 +235,6 @@
                 <constraint firstItem="p76-Vg-Ggy" firstAttribute="centerX" secondItem="7eK-pf-ged" secondAttribute="centerX" id="vfn-0C-X9p"/>
                 <constraint firstItem="5mP-ZO-aXC" firstAttribute="centerX" secondItem="7eK-pf-ged" secondAttribute="centerX" id="zkX-eN-NBT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="lph-87-1Oe"/>
             <size key="customSize" width="134" height="475"/>
             <point key="canvasLocation" x="-224.63768115942031" y="85.379464285714278"/>
         </collectionViewCell>

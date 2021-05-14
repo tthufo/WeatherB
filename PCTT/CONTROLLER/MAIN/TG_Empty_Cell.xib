@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,21 +13,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="355"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uXk-9K-uYG" id="EJ3-BN-CV4">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="354.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="355"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiện tại chưa có thông báo nào" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-TQ-M5L">
-                        <rect key="frame" x="45" y="167.5" width="230" height="19.5"/>
+                        <rect key="frame" x="45" y="168" width="230" height="19.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="5x5-wg-2oe"/>
                             <constraint firstAttribute="width" constant="230" id="LrY-hU-mYP"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.0" green="0.57647058819999997" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clover" translatesAutoresizingMaskIntoConstraints="NO" id="IVY-Ly-dtH">
-                        <rect key="frame" x="123" y="67.5" width="74" height="74"/>
+                        <rect key="frame" x="123" y="68" width="74" height="74"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="74" id="Zbb-Go-btj"/>
                             <constraint firstAttribute="width" constant="74" id="ZsL-po-ta3"/>
@@ -38,8 +36,8 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <button hidden="YES" opaque="NO" alpha="0.0" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-ee-efB">
-                        <rect key="frame" x="115" y="214" width="90" height="40"/>
+                    <button hidden="YES" opaque="NO" alpha="0.0" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-ee-efB">
+                        <rect key="frame" x="115" y="214.5" width="90" height="40"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="Sg5-1H-Yea"/>

@@ -44,6 +44,19 @@ class PC_ChangePass_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var reNewPassErr: UILabel!
     
+    @IBOutlet var oldBPass: UIButton!
+    
+    @IBOutlet var newBPass: UIButton!
+
+    @IBOutlet var reNewBPass: UIButton!
+
+    var isCheckOld: Bool = false
+
+    var isCheckNew: Bool = false
+
+    var isCheckReNew: Bool = false
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,14 +67,24 @@ class PC_ChangePass_ViewController: UIViewController, UITextFieldDelegate {
         }
         
         if Information.bg != nil && Information.bg != "" {
-            bg.imageUrlNoCache(url: Information.bg ?? "")
+//            bg.imageUrlNoCache(url: Information.bg ?? "")
         }
         
         oldPass.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         newPass.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         reNewPass.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         
-        submit.withShadow()
+        let start = UIImage(named: "design_ic_visibility_off")
+        
+        let startImage = start?.imageWithColor(color1: AVHexColor.color(withHexString: "#6E91C9"))
+        
+        oldBPass.setImage(startImage, for: .normal)
+        
+        newBPass.setImage(startImage, for: .normal)
+        
+        reNewBPass.setImage(startImage, for: .normal)
+        
+//        submit.withShadow()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,17 +109,45 @@ class PC_ChangePass_ViewController: UIViewController, UITextFieldDelegate {
         let tag = sender.tag
 
         let fields = [oldPass, newPass, reNewPass]
+        
+        var bowling = [isCheckOld, isCheckNew, isCheckReNew]
 
-        let check = sender.currentImage == UIImage(named: "design_ic_visibility_off")
-        (fields[tag - 1])!.isSecureTextEntry = !check
-        sender.setImage(UIImage(named: !check ? "design_ic_visibility_off" : "design_ic_visibility"), for: .normal)
+//        let start = UIImage(named: "design_ic_visibility_off")
+//
+//        let startImage = start?.imageWithColor(color1: AVHexColor.color(withHexString: "#6E91C9"))
+
+        let check = bowling[tag - 1]
+        //sender.currentImage == startImage//UIImage(named: "design_ic_visibility_off")
+        
+//        print(check)
+        
+        (fields[tag - 1])!.isSecureTextEntry = check
+        
+        let image = UIImage(named: check ? "design_ic_visibility_off" : "design_ic_visibility")
+
+        let finalImage = image?.imageWithColor(color1: AVHexColor.color(withHexString: "#6E91C9"))
+        
+        if tag == 1 {
+            isCheckOld = !isCheckOld
+        } else if tag == 2 {
+            isCheckNew = !isCheckNew
+        } else {
+            isCheckReNew = !isCheckReNew
+        }
+        
+//        bowling[tag] = !bowling[tag]
+
+//        print(bowling[tag])
+        
+        sender.setImage(finalImage, for: .normal)
     }
     
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
         
         if (newPass.text != reNewPass.text) {
-            reNewBg.backgroundColor = UIColor.red
+            reNewBg.backgroundColor = UIColor.white
+            reNewBg.layer.borderColor = UIColor.systemRed.cgColor
             reNewPassErr.alpha = 1
             return
         }
@@ -140,7 +191,8 @@ class PC_ChangePass_ViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textIsChanging(_ textField:UITextField) {
         if (textField == reNewPass) {
-            reNewBg.backgroundColor = UIColor.black
+            reNewBg.backgroundColor = UIColor.white
+            reNewBg.layer.borderColor = AVHexColor.color(withHexString: "#6E91C9").cgColor
             reNewPassErr.alpha = 0
         }
         submit.isEnabled = oldPass.text?.count != 0 && newPass.text?.count != 0 && reNewPass.text?.count != 0

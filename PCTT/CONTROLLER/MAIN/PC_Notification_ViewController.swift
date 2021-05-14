@@ -74,11 +74,11 @@ class PC_Notification_ViewController: UIViewController , UITextFieldDelegate {
             tableView.addSubview(refreshControl)
         }
         
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = UIColor.systemBlue
         refreshControl.addTarget(self, action: #selector(didReloadNotification(_:)), for: .valueChanged)
         
         if Information.bg != nil && Information.bg != "" {
-            bg.imageUrlNoCache(url: Information.bg ?? "")
+//            bg.imageUrlNoCache(url: Information.bg ?? "")
         }
         
         
@@ -122,7 +122,7 @@ class PC_Notification_ViewController: UIViewController , UITextFieldDelegate {
             self.alert1.alpha = !self.isShow ? 1 : 0
             self.alert2.alpha = !self.isShow ? 1 : 0
             self.alert3.alpha = !self.isShow ? 1 : 0
-            self.cover.alpha = !self.isShow ? 0.1 : 0
+            self.cover.alpha = !self.isShow ? 0.3 : 0
             
             (sender as! UIButton).setImage(UIImage(named: !self.isShow ? "xxxx" : "menu"), for: .normal)
         }
@@ -267,6 +267,23 @@ class PC_Notification_ViewController: UIViewController , UITextFieldDelegate {
         })
     }
     
+    func getTempImage(tempo: NSString) -> String {
+        
+        let temp = tempo == "" ? 0 : tempo.intValue
+        
+         if temp <= 0 {
+             return "icon_notify_temp0"
+         } else if temp > 0 && temp <= 4 {
+             return "icon_notify_temp_04"
+         } else if temp > 8 && temp <= 13 {
+             return "icon_notify_temp_813"
+         } else if temp >= 40 {
+             return "icon_notify_temp40"
+         } else {
+             return "icon_notify_temp_48"
+         }
+    }
+    
     let conditions: NSArray = [["key":"solar_radiation_sensor", "image":"icon_uv_to", "forcast": "solar_radiation"],
                                ["key":"wind_direction_sensor", "image":"icon_huong_gio_to", "forcast": "wind_direction"],
                                ["key":"wind_speed_sensor", "image":"icon_gio_to", "forcast": "wind_speed"],
@@ -324,6 +341,8 @@ extension PC_Notification_ViewController: SkeletonTableViewDataSource, SkeletonT
         
         let timeline = self.withView(cell, tag: 10) as! UILabel
         
+        timeline.font = data.getValueFromKey("status") == "1" ? UIFont.italicSystemFont(ofSize: 14) : UIFont.boldSystemFont(ofSize: 14)
+        
         let dateTime = data.getValueFromKey("timeline")?.components(separatedBy: " ").last
         
         let timeTime = data.getValueFromKey("timeline")?.components(separatedBy: " ").first
@@ -339,7 +358,17 @@ extension PC_Notification_ViewController: SkeletonTableViewDataSource, SkeletonT
         image.image = UIImage(named: data.getValueFromKey("type") == "0" ? "icon_rain" : data.getValueFromKey("type") == "1" ? "exclamation" : "mail")
         
         if data.getValueFromKey("type") == "0" || data.getValueFromKey("type") == "1" {
-            image.imageColor(color: AVHexColor.color(withHexString: data.getValueFromKey("color")))
+            if data.getValueFromKey("sensor_target") == "air_temperature" {
+//                image.image = UIImage(named: self.getTempImage(tempo: data.getValueFromKey("air_temperature")! as NSString))
+                image.image = UIImage(named: "icon_notify_temp_48")
+                image.imageColor(color: AVHexColor.color(withHexString: data.getValueFromKey("color")))
+            } else {
+                if data.getValueFromKey("color") != "" {
+                    image.imageColor(color: AVHexColor.color(withHexString: data.getValueFromKey("color")))
+                } else {
+                    image.imageColor(color: UIColor.systemGray)
+                }
+            }
         }
         
         let title = self.withView(cell, tag: 2) as! UILabel
@@ -352,9 +381,11 @@ extension PC_Notification_ViewController: SkeletonTableViewDataSource, SkeletonT
         
         content.text = data.getValueFromKey("content")
         
-        let bg = self.withView(cell, tag: 5) as! UIView
+        content.font = data.getValueFromKey("status") == "1" ? UIFont.systemFont(ofSize: 17) : UIFont.boldSystemFont(ofSize: 17)
         
-        bg.alpha = data.getValueFromKey("status") == "1" ? 0 : 0.3
+//        let bg = self.withView(cell, tag: 5) as! UIView
+        
+//        bg.alpha = data.getValueFromKey("status") == "1" ? 0 : 0.2
         
         let swipeView = viewWithImageName("trash")
         let swipeColor = AVHexColor.color(withHexString: "#456568")
@@ -410,6 +441,8 @@ extension PC_Notification_ViewController: SkeletonTableViewDataSource, SkeletonT
         foreCast.stationCode = data.getValueFromKey("station_code") as NSString?
         
         foreCast.station = data.getValueFromKey("station_name") as NSString?
+        
+        foreCast.isForecast = true
         
         foreCast.dataMonitorExtra = dataMonitorExtra
         

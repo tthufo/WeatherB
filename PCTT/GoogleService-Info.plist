@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>11199047545-5rvk49e8cd4tck3cduha312opb9398i9.apps.googleusercontent.com</string>
+	<string>217093479961-lop152lu4ecu8e2h599ais9gbblo9eac.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.11199047545-5rvk49e8cd4tck3cduha312opb9398i9</string>
+	<string>com.googleusercontent.apps.217093479961-lop152lu4ecu8e2h599ais9gbblo9eac</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>11199047545-m24picfhe84ndjk5obe43kc6admb2h1j.apps.googleusercontent.com</string>
+	<string>217093479961-fv1pnsj61rf2buvg4as2tlvaijlkfsct.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAIfQUP1eyucWedwyzYBNWq92wmZsGdk9s</string>
+	<string>AIzaSyBapV5mU9qmUNOG9wwcT7L9gLtVe1RjFWw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>11199047545</string>
+	<string>217093479961</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.agri.weatherbook</string>
+	<string>vn.pdms.app</string>
 	<key>PROJECT_ID</key>
-	<string>weatherbook-223dc</string>
+	<string>pdms-d541a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>weatherbook-223dc.appspot.com</string>
+	<string>pdms-d541a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:11199047545:ios:4f3574272ae29df2</string>
-	<key>DATABASE_URL</key>
-	<string>https://weatherbook-223dc.firebaseio.com</string>
+	<string>1:217093479961:ios:01cb6890312f0cd04f5488</string>
 </dict>
 </plist>

@@ -16,7 +16,9 @@ class PC_ForeCast_7_Cell: UITableViewCell, UICollectionViewDataSource, UICollect
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        collectionView.withCell("PC_Weather_Cell")
+        if collectionView != nil {
+            collectionView.withCell("PC_Weather_Cell")
+        }
     }
     
     let strip: (String) -> String = {
@@ -30,7 +32,7 @@ class PC_ForeCast_7_Cell: UITableViewCell, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Int(140), height: Int(475))
+        return CGSize(width: Int(140), height: Int(425))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -49,13 +51,17 @@ class PC_ForeCast_7_Cell: UITableViewCell, UICollectionViewDataSource, UICollect
         
         let date = self.withView(cell, tag: 1) as! UILabel
         
-        let dateTime = ((data.getValueFromKey("date")! as NSString).date(withFormat: "yyyy-MM-dd")! as NSDate).string(withFormat: "dd/MM")
+        print(data)
         
-        date.text = dateTime == NSDate().string(withFormat: "dd/MM") ? "HÔM NAY" : ((data.getValueFromKey("date")! as NSString).date(withFormat: "yyyy-MM-dd")! as NSDate).string(withFormat: "dd/MM")
+        let dateTime = ((data.getValueFromKey("date")! as NSString).date(withFormat: "dd/MM/yyyy")! as NSDate).string(withFormat: "dd/MM")
+        
+        date.text = dateTime == NSDate().string(withFormat: "dd/MM") ? "HÔM NAY" : ((data.getValueFromKey("date")! as NSString).date(withFormat: "dd/MM/yyyy")! as NSDate).string(withFormat: "dd/MM")
         
         let image = self.withView(cell, tag: 2) as! UIImageView
         
         image.image = UIImage(named: "icon_%@".format(parameters: data.getValueFromKey("icon")))
+        
+//        image.imageColor(color: UIColor.darkGray)
         
         let max = self.withView(cell, tag: 3) as! UILabel
         

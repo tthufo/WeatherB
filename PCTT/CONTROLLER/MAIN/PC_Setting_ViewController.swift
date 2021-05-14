@@ -39,33 +39,41 @@ class PC_Setting_ViewController: UIViewController {
         let dateTime = date.components(separatedBy: "-")
         
         var dat: String = ""
-        for n in 0...dateTime.count - 1 {
-            dat.append(dateTime[dateTime.count - 1 - n])
-            if n != 2 {
-                dat.append("/")
+        if dateTime.count > 1 {
+            for n in 0...dateTime.count - 1 {
+                dat.append(dateTime[dateTime.count - 1 - n])
+                if n != 2 {
+                    dat.append("/")
+                }
             }
         }
         
         let character = (uInfo["name"] as! String).components(separatedBy: " ").last
         
-        dataList = Information.check != nil ? [["title": String((character?.character(at: 0))!), "content": uInfo["name"]],["title":"Cho phép gửi thông báo", "content": "sw"], ["title":"Phản hồi", "content": "nav", "badge":"Mới"]] : [["title": String((character?.character(at: 0))!), "content": uInfo["name"]],
+//        print("==>", dateTime)
+        
+        dataList = Information.check != nil ? [["title": String((character?.character(at: 0))!),
+                                                "content": uInfo["name"]],
+                                               ["title":"Cho phép gửi thông báo", "content": "sw"] /*, ["title":"Phản hồi", "content": "nav", "badge":"Mới"]*/] : [["title": String((character?.character(at: 0))!), "content": uInfo["name"]],
         ["title":"Đổi mật khẩu", "content": "nav"],
-        ["title":"Ngày khởi tạo", "content": dat],
+//        ["title":"Ngày khởi tạo", "content": dat],
         ["title":"Email", "content": uInfo["email"]],
-        ["title":"Liên hệ", "content": uInfo["phone"]],
+//        ["title":"Liên hệ", "content": uInfo["phone"]],
         ["title":"Cho phép gửi thông báo", "content": "sw"],
-        ["title":"Phản hồi", "content": "nav", "badge":"Mới"],
+//        ["title":"Phản hồi", "content": "nav", "badge":"Mới"],
         ["title":"Thoát tài khoản", "content": ""]]
         
         if Information.bg != nil && Information.bg != "" {
-            bg.imageUrlNoCache(url: Information.bg ?? "")
+//            bg.imageUrlNoCache(url: Information.bg ?? "")
         }
                 
-        copyR.text = "%@".format(parameters: (Information.userInfo?.getValueFromKey("company_name"))!)
+//        copyR.text = "%@".format(parameters: (Information.userInfo?.getValueFromKey("company_name"))!)
         
+        copyR.text = "PDMS"
+
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        bottom.text = "Weather Book © 2019 - Ver %@ - Hotline 0917271595".format(parameters: appVersion!)
+        bottom.text = "WEATHERPLUS.,JSC © - Phiên bản %@ - Hotline 0961308830".format(parameters: appVersion!)
 
         bottom.action(forTouch: [:]) { (obj) in
             self.callNumber(phoneNumber: Information.phone)
@@ -77,7 +85,7 @@ class PC_Setting_ViewController: UIViewController {
         
         blurView.topRadius()
         
-        self.didRequestStatusFeedBack()
+//        self.didRequestStatusFeedBack()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,7 +146,7 @@ extension PC_Setting_ViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let data = dataList![indexPath.row] as! NSDictionary
-        
+                
         if indexPath.row == 0 {
             
             let title = self.withView(header, tag: 1) as! UILabel
@@ -199,6 +207,8 @@ extension PC_Setting_ViewController: UITableViewDataSource, UITableViewDelegate 
         
         nav.alpha = data["content"] as? String == "nav" ? 1 : 0
         
+        nav.imageColor(color: UIColor.darkGray)
+        
         return  cell
     }
     
@@ -210,11 +220,12 @@ extension PC_Setting_ViewController: UITableViewDataSource, UITableViewDelegate 
                 self.navigationController?.pushViewController(PC_ChangePass_ViewController.init(), animated: true)
             }
             
-            if indexPath.row == 6 {
-                self.navigationController?.pushViewController(PC_FeedBack_ViewController.init(), animated: true)
+            if indexPath.row == 4 {
+                self.didPressLogout()
+//                self.navigationController?.pushViewController(PC_FeedBack_ViewController.init(), animated: true)
             }
             
-            if indexPath.row == 5 {
+            if indexPath.row == 3 {
                 
                 if !self.checkForNotification() {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)

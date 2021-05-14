@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,13 +17,13 @@
             <rect key="frame" x="0.0" y="0.0" width="369" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xhx-Rg-Ag9" id="z3B-7t-Hec">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="69.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K3-bj-8iW">
-                        <rect key="frame" x="68" y="15" width="174" height="39"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="55" y="15" width="187" height="39.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
@@ -37,15 +35,15 @@
                             <constraint firstAttribute="height" constant="39" id="3bd-02-Obu"/>
                             <constraint firstAttribute="width" constant="107" id="EIR-BW-bHC"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXT-hY-BsN">
-                        <rect key="frame" x="75" y="16" width="167" height="35"/>
+                        <rect key="frame" x="62" y="16" width="180" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="yfp-PQ-nh2"/>
@@ -55,10 +53,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-Q9-aOb">
-                        <rect key="frame" x="12" y="11" width="48" height="48"/>
+                        <rect key="frame" x="12" y="17" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="LtM-t1-lNc"/>
-                            <constraint firstAttribute="width" constant="48" id="xuZ-aa-122"/>
+                            <constraint firstAttribute="height" constant="35" id="LtM-t1-lNc"/>
+                            <constraint firstAttribute="width" constant="35" id="xuZ-aa-122"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
@@ -87,7 +85,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i00-FA-Cby">
-                        <rect key="frame" x="5" y="69" width="359" height="0.5"/>
+                        <rect key="frame" x="5" y="69.5" width="359" height="0.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="fUH-UY-mLH"/>
@@ -100,7 +98,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="hXT-hY-BsN" firstAttribute="leading" secondItem="FgE-Q9-aOb" secondAttribute="trailing" constant="15" id="9Dc-7j-6zf"/>
-                    <constraint firstItem="FgE-Q9-aOb" firstAttribute="top" secondItem="z3B-7t-Hec" secondAttribute="top" constant="11" id="CkY-RN-d0o"/>
+                    <constraint firstItem="FgE-Q9-aOb" firstAttribute="top" secondItem="z3B-7t-Hec" secondAttribute="top" constant="17" id="CkY-RN-d0o"/>
                     <constraint firstAttribute="trailing" secondItem="fSd-wG-V9L" secondAttribute="trailing" constant="12" id="EWo-Gm-hh4"/>
                     <constraint firstItem="RUu-w3-Rb7" firstAttribute="top" secondItem="z3B-7t-Hec" secondAttribute="top" constant="15" id="Hb3-TE-fwa"/>
                     <constraint firstItem="9K3-bj-8iW" firstAttribute="top" secondItem="z3B-7t-Hec" secondAttribute="top" constant="15" id="PBO-xf-rUS"/>

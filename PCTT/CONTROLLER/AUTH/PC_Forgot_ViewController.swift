@@ -31,6 +31,8 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet var bottom: MarqueeLabel!
     
+    @IBOutlet var uImage: UIImageView!
+    
     var kb: KeyBoard!
     
     let bottomGap = IS_IPHONE_5 ? 20.0 : 40.0
@@ -44,7 +46,7 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
         
         self.setUp()
         
-        uName.inputAccessoryView = self.toolBar()
+//        uName.inputAccessoryView = self.toolBar()
         
         self.view.action(forTouch: [:]) { (obj) in
             self.view.endEditing(true)
@@ -53,13 +55,15 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        bottom.text = "Weather Book © 2019 - Ver %@ - Hotline 0917271595".format(parameters: appVersion!)
-        
+        bottom.text = "WEATHERPLUS.,JSC © - Phiên bản %@ - Hotline 0961308830".format(parameters: appVersion!)
+
         bottom.action(forTouch: [:]) { (obj) in
             self.callNumber(phoneNumber: Information.phone)
         }
         
-        submit.withShadow()
+        uImage.imageColor(color: AVHexColor.color(withHexString: "#6E91C9"))
+
+//        submit.withShadow()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,7 +108,7 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
             self.cover.alpha = bbgg ? 0.3 : 0
         }) { (done) in
             UIView.transition(with: self.bg, duration: 1.5, options: .transitionCrossDissolve, animations: {
-                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "bg_default")
+//                self.bg.image = bbgg ? Information.bbgg!.stringImage() : UIImage(named: "bg_default")
             }, completion: { (done) in
                 UIView.animate(withDuration: 1.5, animations: {
                     self.cover.alpha = 0
@@ -161,7 +165,7 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         count.text = "%i/10".format(parameters: updatedString!.count > 10 ? 10 : updatedString!.count)
-        return updatedString!.count >= 11 ? false : true
+        return updatedString!.count >= 11 ? true : true
     }
     
     @IBAction func didPressBack() {
@@ -172,7 +176,7 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"forgetPassword",
-                                                    "phone":uName.text as Any,
+                                                    "email":uName.text as Any,
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
                                                     "host":self], withCache: { (cacheString) in
@@ -183,17 +187,18 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
                 return
             }
             
-            self.showToast("Mật khẩu mới sẽ được gửi qua số điện thoại".format(parameters: self.uName.text!), andPos: 0)
+            self.showToast("Mật khẩu mới sẽ được gửi về email của bạn".format(parameters: self.uName.text!), andPos: 0)
 
             self.didPressBack()
         })
     }
     
     @objc func textIsChanging(_ textField:UITextField) {
-        uNameBg.backgroundColor = uName.text?.count == 10 ? UIColor.black : UIColor.red
-        uNameErr.alpha = uName.text?.count == 10 ? 0 : 1
-        submit.isEnabled = uName.text?.count == 10
-        submit.alpha = uName.text?.count == 10 ? 1 : 0.5
+        uNameBg.backgroundColor = uName.text!.isEmail ? UIColor.white : UIColor.white
+        uNameBg.layer.borderColor = uName.text!.isEmail ? AVHexColor.color(withHexString: "#6E91C9")?.cgColor : UIColor.systemRed.cgColor
+        uNameErr.alpha = uName.text!.isEmail ? 0 : 1
+        submit.isEnabled = uName.text!.isEmail
+        submit.alpha = uName.text!.isEmail ? 1 : 0.5
     }
     
     func toolBar() -> UIToolbar {

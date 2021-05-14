@@ -37,6 +37,7 @@
 		FC24BE5622FC150C00F1D70C /* PC_Marker_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC24BE5522FC150C00F1D70C /* PC_Marker_View.xib */; };
 		FC250D04230103F4008AB980 /* PC_Global_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC250D02230103F4008AB980 /* PC_Global_ViewController.swift */; };
 		FC250D05230103F4008AB980 /* PC_Global_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC250D03230103F4008AB980 /* PC_Global_ViewController.xib */; };
+		FC30980A262B60D0003C4460 /* PC_Instruction_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC309809262B60D0003C4460 /* PC_Instruction_Cell.xib */; };
 		FC31018E23195B7F009DBF95 /* EM_MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31018B23195B7F009DBF95 /* EM_MenuView.m */; };
 		FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31018D23195B7F009DBF95 /* EM_Menu.xib */; };
 		FC5D982422F54134006FA3F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D982322F54134006FA3F1 /* AppDelegate.swift */; };
@@ -123,6 +124,7 @@
 		FC24BE5522FC150C00F1D70C /* PC_Marker_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Marker_View.xib; sourceTree = "<group>"; };
 		FC250D02230103F4008AB980 /* PC_Global_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Global_ViewController.swift; sourceTree = "<group>"; };
 		FC250D03230103F4008AB980 /* PC_Global_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Global_ViewController.xib; sourceTree = "<group>"; };
+		FC309809262B60D0003C4460 /* PC_Instruction_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Instruction_Cell.xib; sourceTree = "<group>"; };
 		FC31018B23195B7F009DBF95 /* EM_MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EM_MenuView.m; sourceTree = "<group>"; };
 		FC31018C23195B7F009DBF95 /* EM_MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EM_MenuView.h; sourceTree = "<group>"; };
 		FC31018D23195B7F009DBF95 /* EM_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EM_Menu.xib; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */,
 				FCEDD7DF22F9E19500DC4613 /* PC_Notification_ViewController.xib */,
 				FCEDD7E222F9F00400DC4613 /* PC_Notification_Cell.xib */,
+				FC69937722FB503F00C62D42 /* PC_Station_Cell0.xib */,
 				2DB6B1A82330B4F40036A26A /* PC_Station_Cell1.xib */,
 				2DB6B1A92330B4F90036A26A /* PC_Station_Cell2.xib */,
 				2DB6B1AA2330B4FA0036A26A /* PC_Station_Cell3.xib */,
@@ -225,10 +228,10 @@
 				2DB6B1A72330B4ED0036A26A /* PC_Station_Cell6.xib */,
 				FC69937322FB4A8200C62D42 /* PC_Station_ViewController.swift */,
 				FC69937422FB4A8200C62D42 /* PC_Station_ViewController.xib */,
-				FC69937722FB503F00C62D42 /* PC_Station_Cell0.xib */,
 				FC24BE5522FC150C00F1D70C /* PC_Marker_View.xib */,
 				FC193A9C22FCB5EF00CDF719 /* PC_ForCast_ViewController.swift */,
 				FC193A9D22FCB5EF00CDF719 /* PC_ForCast_ViewController.xib */,
+				FC309809262B60D0003C4460 /* PC_Instruction_Cell.xib */,
 				FC1A516522FE8EE200298B28 /* PC_ForeCast_Cell.xib */,
 				FC18571C22FFED6000DB818C /* PC_ForeCast_7_Cell.swift */,
 				FC18571D22FFED6000DB818C /* PC_ForeCast_7_Cell.xib */,
@@ -423,6 +426,7 @@
 				FC69937822FB503F00C62D42 /* PC_Station_Cell0.xib in Resources */,
 				2DB6B1AC2330B4FB0036A26A /* PC_Station_Cell4.xib in Resources */,
 				FCB19456231598DA007120AF /* ChatAccessory.xib in Resources */,
+				FC30980A262B60D0003C4460 /* PC_Instruction_Cell.xib in Resources */,
 				FC1B307722F724C0002E873F /* PC_Setting_Cell.xib in Resources */,
 				FC5D983922F55513006FA3F1 /* PC_Login_ViewController.xib in Resources */,
 				FC1AA23B22F879E300C09E02 /* PC_Main_Cell.xib in Resources */,
@@ -741,7 +745,7 @@
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: Nguyen Ngoc Quang (589UWV5PGW)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7546H2CFFT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -753,10 +757,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agri.weatherbook;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.pdms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeatherBook_dev;
+				PROVISIONING_PROFILE_SPECIFIER = pdms_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -774,7 +778,7 @@
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: AGRIMEDIA WEATHER AND AGRICULTURE SOLUTION JOINT STOCK COMPANY (7546H2CFFT)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7546H2CFFT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -786,10 +790,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agri.weatherbook;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.pdms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeatherBook_Dis;
+				PROVISIONING_PROFILE_SPECIFIER = pdms_pro;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -801,7 +805,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: Nguyen Ngoc Quang (589UWV5PGW)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7546H2CFFT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -814,10 +818,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agri.weatherbook.NotificationService;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.pdms.app.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeatherBook_dev_extension;
+				PROVISIONING_PROFILE_SPECIFIER = PDMS_extension_dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -829,7 +833,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Distribution: AGRIMEDIA WEATHER AND AGRICULTURE SOLUTION JOINT STOCK COMPANY (7546H2CFFT)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7546H2CFFT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -842,10 +846,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agri.weatherbook.NotificationService;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.pdms.app.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeatherBook_dis_extension;
+				PROVISIONING_PROFILE_SPECIFIER = PDMS_extension_pro;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
